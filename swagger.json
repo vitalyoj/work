@@ -1,0 +1,20 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API Documentation for Work Platform",
+    "version": "1.0.0",
+    "title": "Work Platform API"
+  },
+  "paths": {
+    "/api/vacancies": {
+      "get": {
+        "summary": "Get all vacancies",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    }
+  }
+}
