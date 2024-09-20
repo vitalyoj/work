@@ -1,19 +1,122 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "API Documentation for Work Platform",
     "version": "1.0.0",
-    "title": "Work Platform API"
+    "title": "Job Platform API",
+    "description": "API documentation for the Job Platform"
   },
   "paths": {
+    "/api/students": {
+      "get": {
+        "summary": "Get all students",
+        "responses": {
+          "200": {
+            "description": "A list of students"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new student",
+        "parameters": [
+          {
+            "name": "Student",
+            "in": "body",
+            "description": "Student to create",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Student created successfully"
+          }
+        }
+      }
+    },
+    "/api/employers": {
+      "get": {
+        "summary": "Get all employers",
+        "responses": {
+          "200": {
+            "description": "A list of employers"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new employer",
+        "parameters": [
+          {
+            "name": "Employer",
+            "in": "body",
+            "description": "Employer to create",
+            "schema": {
+              "$ref": "#/definitions/Employer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Employer created successfully"
+          }
+        }
+      }
+    },
     "/api/vacancies": {
       "get": {
         "summary": "Get all vacancies",
         "responses": {
           "200": {
-            "description": "Successful response"
+            "description": "A list of vacancies"
           }
         }
+      },
+      "post": {
+        "summary": "Create a new vacancy",
+        "parameters": [
+          {
+            "name": "Vacancy",
+            "in": "body",
+            "description": "Vacancy to create",
+            "schema": {
+              "$ref": "#/definitions/Vacancy"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Vacancy created successfully"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Student": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "resume": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Employer": {
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" }
+      }
+    },
+    "Vacancy": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "requirements": { "type": "array", "items": { "type": "string" } },
+        "employer": { "type": "string" }
       }
     }
   }

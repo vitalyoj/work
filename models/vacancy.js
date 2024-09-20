@@ -1,12 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const vacancySchema = new mongoose.Schema({
+const VacancySchema = new mongoose.Schema({
   title: { type: String, required: true },
-  description: { type: String },
-  requirements: { type: [String] },
-  employer: { type: mongoose.Schema.Types.ObjectId, ref: "Employer" },
-  postedAt: { type: Date, default: Date.now },
-  status: { type: String, default: "open" },
+  description: { type: String, required: true },
+  requirements: { type: [String], required: true },
+  locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true }, // Добавлено поле
+  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }, // Добавлено поле
+  employerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Employer', required: true }, // Добавлено поле
+  createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Vacancy", vacancySchema);
+module.exports = mongoose.model('Vacancy', VacancySchema);
