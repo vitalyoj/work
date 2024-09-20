@@ -4,9 +4,9 @@ const VacancySchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   requirements: { type: [String], required: true },
-  locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true }, // Добавлено поле
-  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }, // Добавлено поле
-  employerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Employer', required: true }, // Добавлено поле
+  locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: true },
+  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true }, 
+  employerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Employer', required: true }, 
   createdAt: { type: Date, default: Date.now },
 });
 

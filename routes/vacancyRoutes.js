@@ -26,9 +26,9 @@ router.post('/', async (req, res) => {
     title,
     description,
     requirements,
-    locationId, // Передача locationId
-    categoryId, // Передача categoryId
-    employerId, // Передача employerId
+    locationId, 
+    categoryId, 
+    employerId, 
   });
   try {
     const savedVacancy = await newVacancy.save();
@@ -39,11 +39,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Удалить вакансию по ID
+// Удалить вакансию 
 router.delete('/:id', async (req, res) => {
   try {
     await Vacancy.findByIdAndDelete(req.params.id);
-    res.status(204).send(); // Успешное удаление
+    res.status(204).send(); 
   } catch (err) {
     res.status(500).json({ message: 'Ошибка при удалении вакансии' });
   }

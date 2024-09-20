@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/database'); // Ваше подключение к базе данных
+const db = require('../config/database'); 
 
-// Получение всех категорий
 router.get('/', (req, res) => {
   const query = 'SELECT * FROM categories';
   

@@ -12,14 +12,12 @@ const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
 dotenv.config();
 
-const mysql = require('mysql2');
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-// Создание подключения с использованием Windows Authentication
-const db = mysql.createConnection({
-  host: 'DESKTOP-H7U8752\SQLEXPRESS', // Адрес хоста
-  database: 'workplatform', // Название вашей базы данных
-  socketPath: 'C:/path_to_socket/mysql.sock', // (если требуется, для локальной системы)
-});
 
 db.connect((err) => {
   if (err) {

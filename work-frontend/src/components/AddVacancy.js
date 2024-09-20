@@ -4,9 +4,9 @@ const AddVacancy = ({ onAdd }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [requirements, setRequirements] = useState('');
-  const [locationId, setLocationId] = useState('');  // Добавлено поле
-  const [categoryId, setCategoryId] = useState('');  // Добавлено поле
-  const [employerId, setEmployerId] = useState('');  // Добавлено поле
+  const [locationId, setLocationId] = useState('');  
+  const [categoryId, setCategoryId] = useState('');  
+  const [employerId, setEmployerId] = useState('');  /
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,13 +14,13 @@ const AddVacancy = ({ onAdd }) => {
       title,
       description,
       requirements: requirements.split(',').map(req => req.trim()),
-      locationId,  // Передача locationId
-      categoryId,  // Передача categoryId
-      employerId,  // Передача employerId
+      locationId, 
+      categoryId, 
+      employerId,  
 
     };
 
-    console.log('Отправляемые данные:', newVacancy); // Лог отправляемых данных
+    console.log('Отправляемые данные:', newVacancy); // Лог
     const response = await fetch('http://localhost:5000/api/vacancies', {
       method: 'POST',
       headers: {
@@ -32,7 +32,6 @@ const AddVacancy = ({ onAdd }) => {
     if (response.ok) {
       const data = await response.json();
       onAdd(data);
-      // Сброс полей формы
       setTitle('');
       setDescription('');
       setRequirements('');

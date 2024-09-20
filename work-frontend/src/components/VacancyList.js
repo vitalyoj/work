@@ -4,12 +4,11 @@ import './VacancyList.css';
 import AddVacancy from './AddVacancy';
 
 const VacancyList = () => {
-  // Инициализация состояния для списка вакансий
+
   const [vacancies, setVacancies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Используем useEffect для загрузки данных при монтировании компонента
   useEffect(() => {
     const fetchVacancies = async () => {
       try {
@@ -19,16 +18,15 @@ const VacancyList = () => {
         }
         const data = await response.json();
 
-        // Проверяем, является ли data массивом
         if (Array.isArray(data)) {
-          setVacancies(data);  // Устанавливаем данные
+          setVacancies(data); 
         } else {
           setError('Неверный формат данных');
         }
       } catch (error) {
-        setError(error.message);  // Устанавливаем сообщение об ошибке
+        setError(error.message); 
       } finally {
-        setLoading(false);  // Отключаем режим загрузки
+        setLoading(false); 
       }
     };
 
@@ -36,14 +34,14 @@ const VacancyList = () => {
   }, []);
 
  const handleAddVacancy = (newVacancy) => {
-    setVacancies([...vacancies, newVacancy]); // Добавляем новую вакансию в список
+    setVacancies([...vacancies, newVacancy]);
   };
 
   const handleDeleteVacancy = async (id) => {
     await fetch(`http://localhost:5000/api/vacancies/${id}`, {
       method: 'DELETE',
     });
-    setVacancies(vacancies.filter(vacancy => vacancy._id !== id)); // Удаляем вакансию из списка
+    setVacancies(vacancies.filter(vacancy => vacancy._id !== id));
   };
 
   if (loading) return <p>Загрузка вакансий...</p>;
