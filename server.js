@@ -1,5 +1,7 @@
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 //app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -19,29 +21,11 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch((err) => console.error("MongoDB connection error:", err));
 
 
-db.connect((err) => {
-  if (err) {
-    console.error('Ошибка подключения к MySQL:', err);
-    return;
-  }
-  console.log('Подключено к MySQL через Windows Authentication');
-});
-
-module.exports = db;
-db.connect((err) => {
-  if (err) {
-    console.error('Ошибка подключения к MySQL:', err);
-    return;
-  }
-  console.log('Подключено к MySQL');
-});
-
-module.exports = db;
-
-
 const studentRoutes = require("./routes/students");
 const vacancyRoutes = require("./routes/vacancyRoutes");
 const employerRoutes = require("./routes/employers");
+const applicationRoutes = require("./routes/ApplicationRoutes");
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 connectDB();
@@ -53,6 +37,21 @@ app.use(bodyParser.json());
 app.use("/api/students", studentRoutes);
 app.use("/api/employers", employerRoutes);
 app.use("/api/vacancies", vacancyRoutes);
+app.use("/api/applications", applicationRoutes);
+app.use('/auth', authRoutes);
+app.use(
+  session({
+    secret: 'secret_key',  // Секретный ключ для шифрования сессий
+    resave: false,              // Не сохранять сессию, если она не изменялась
+    saveUninitialized: false,   // Не сохранять пустые сессии
+    store: MongoStore.create({
+      mongoUrl: 'mongodb://localhost:27017/workplatform', // Ваш MongoDB URL
+    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24, // Сессия будет жить 24 часа
+    },
+  })
+);
 
 
 

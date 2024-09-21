@@ -1,0 +1,35 @@
+.vacancies-page {
+    padding: 20px;
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .vacancies-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #343a40; 
+  }
+  
+  .search-container {
+    margin-bottom: 30px;
+  }
+  
+  .vacancy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+  }
+  
+  .vacancy-item {
+    background-color: #fff; 
+    padding: 15px;
+    border: 1px solid #dee2e6; 
+    border-radius: 4px; 
+    transition: transform 0.2s; 
+  }
+  
+  .vacancy-item:hover {
+    transform: translateY(-2px); 
+  }
+  

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './VacancyList.css';
 import AddVacancy from './AddVacancy';
+import AddApplication from './AddApplication';
+import ApplicationList from './ApplicationList';
+
 
 const VacancyList = () => {
 
@@ -50,7 +53,7 @@ const VacancyList = () => {
   return (
     <div className="vacancy-list">
       <h1>Список вакансий</h1>
-      <AddVacancy onAdd={handleAddVacancy} /> {/* Добавляем форму для добавления вакансий */}
+      
       {vacancies.length > 0 ? (
         vacancies.map(vacancy => (
           <div key={vacancy._id} className="vacancy-card">
@@ -66,5 +69,6 @@ const VacancyList = () => {
     </div>
   );
 };
+
 
 export default VacancyList;

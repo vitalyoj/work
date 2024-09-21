@@ -12,13 +12,22 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/vacancies">Vacancies</Link>
+              <Link className="nav-link" to="/vacancies">Вакансии</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/students">Students</Link>
+              <Link className="nav-link" to="/findvacancy">Поиск вакансий</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/employers">Employers</Link>
+              <Link className="nav-link" to="/addvacancy">Добавить вакансию</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/applications">Заявки</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">Логин</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/register">Регистрация</Link>
             </li>
           </ul>
         </div>
