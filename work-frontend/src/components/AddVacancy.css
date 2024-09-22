@@ -1,53 +1,66 @@
-.add-vacancy-container {
+.add-vacancy-form {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .add-vacancy-form h2 {
   text-align: center;
+  font-size: 24px;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.form-group textarea {
-  height: 100px;
-}
-
-.btn {
+.add-vacancy-form label {
   display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 18px;
+  margin-bottom: 8px;
   font-weight: bold;
+  color: #555;
 }
 
-@media (max-width: 768px) {
-  .add-vacancy-container {
-    padding: 10px;
-  }
-  
-  .add-vacancy-form h2 {
-    font-size: 24px;
-  }
+.add-vacancy-form input[type="text"],
+.add-vacancy-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.add-vacancy-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+.add-vacancy-form input:focus,
+.add-vacancy-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.add-vacancy-form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-vacancy-form button:hover {
+  background-color: #0056b3;
+}
+
+.add-vacancy-form div {
+  margin-bottom: 20px;
 }

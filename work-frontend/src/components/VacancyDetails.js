@@ -1,6 +1,7 @@
 import React from 'react';
 import AddApplication from './AddApplication';  
 import ApplicationList from './ApplicationList'; 
+import './AddApplications.css';
 
 function VacancyDetails({ vacancyId }) {
   return (

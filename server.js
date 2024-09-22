@@ -34,6 +34,7 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/api/students", studentRoutes);
 app.use("/api/employers", employerRoutes);
 app.use("/api/vacancies", vacancyRoutes);
@@ -41,14 +42,14 @@ app.use("/api/applications", applicationRoutes);
 app.use('/auth', authRoutes);
 app.use(
   session({
-    secret: 'secret_key',  // Секретный ключ для шифрования сессий
-    resave: false,              // Не сохранять сессию, если она не изменялась
-    saveUninitialized: false,   // Не сохранять пустые сессии
+    secret: 'secret_key',  // Секретный ключ 
+    resave: false,              
+    saveUninitialized: false,  
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost:27017/workplatform', // Ваш MongoDB URL
+      mongoUrl: 'mongodb://localhost:27017/workplatform', 
     }),
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // Сессия будет жить 24 часа
+      maxAge: 1000 * 60 * 60 * 24, 
     },
   })
 );

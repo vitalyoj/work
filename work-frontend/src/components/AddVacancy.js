@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AddVacancy.css';
 
 const AddVacancy = ({ onAdd }) => {
   const [title, setTitle] = useState('');

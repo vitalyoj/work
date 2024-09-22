@@ -22,7 +22,7 @@ router.post('/register', async (req, res) => {
     await newUser.save();
 
     // Сохраняем данные пользователя в сессии
-    req.session.user = { id: newUser._id, name: newUser.name, role: newUser.role };
+    req.session.userId = user._id;
 
     res.status(201).json({ message: 'Регистрация успешна' });
   } catch (error) {
@@ -30,6 +30,27 @@ router.post('/register', async (req, res) => {
   }
 });
 
+router.get('/user-role', async (req, res) => {
+  try {
+    const userId = req.session.userId; // Идентификатор пользователя из сессии
+
+    if (!userId) {
+      return res.status(401).json({ message: 'Пользователь не авторизован' });
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+
+    // Возвращаем роль пользователя
+    res.json({ role: user.role });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Ошибка сервера' });
+  }
+});
 // Авторизация
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -64,7 +85,7 @@ router.post('/logout', (req, res) => {
     if (err) {
       return res.status(500).json({ message: 'Ошибка при выходе' });
     }
-    res.clearCookie('connect.sid'); // Удаляем куки сессии
+    res.clearCookie('connect.sid');
     res.json({ message: 'Вы вышли из системы' });
   });
 });

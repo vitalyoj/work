@@ -1,6 +1,6 @@
 const express = require('express');
-const Application = require('../models/ApplicationModel'); // Модель заявки
-const Vacancy = require('../models/vacancy'); // Модель вакансии
+const Application = require('../models/ApplicationModel'); 
+const Vacancy = require('../models/vacancy'); 
 const router = express.Router();
 
 // Подача заявки на вакансию

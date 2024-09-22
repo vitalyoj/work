@@ -5,6 +5,7 @@ import './vacpage.css';
 
 const VacanciesPage = () => {
   const [vacancies, setVacancies] = useState([]);
+  
 
   const handleSearch = (data) => {
     setVacancies(data);

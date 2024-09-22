@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AddApplications.css';
 
 function ApplyForm({ vacancyId }) {
   const [name, setName] = useState('');
